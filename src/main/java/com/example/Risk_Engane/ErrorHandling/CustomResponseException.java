@@ -33,6 +33,14 @@ public class CustomResponseException extends RuntimeException {
         return new CustomResponseException("Your device blocked for: " + time + " " + type, 400);
     }
 
+    public static CustomResponseException badCredentials () {
+        return new CustomResponseException("Bad credentials!", 403);
+    }
+
+    public static CustomResponseException expiredCode () {
+        return new CustomResponseException("Code is expired, try to generate new one", 400);
+    }
+
     public String getMessage () {return message;}
     public int getCode () {return code;}
 

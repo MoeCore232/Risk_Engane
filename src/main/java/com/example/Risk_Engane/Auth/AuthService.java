@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class AuthService {
@@ -45,8 +46,7 @@ public class AuthService {
         return findAuth;
     }
 
-    @Transactional
-    public String login (AuthDto.Login login) {
+    public UUID login (AuthDto.Login login) {
 
         blockService.isBlocked(login.deviceName());
         blockService.isBlocked(login.email());
@@ -63,7 +63,8 @@ public class AuthService {
 
         watcherRepo.save(watcher.get());
 
-        return "dn3nfi2j3i2jfi23u52835923dih3fi3ho2h3oifh3ihoxh23ohro3h2ro3frgergre43434ggrthrthrthrth";
+        // محاكاة التوكين في عملية المصادقة
+        return UUID.randomUUID();
     }
 
 }
